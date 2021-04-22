@@ -26,6 +26,7 @@ DB Structure:
 
 Success example:         
 
-![Mintos-demo-lookup-success](https://user-images.githubusercontent.com/16892576/115747810-456f1480-a39e-11eb-988e-06ac0c1e3b8c.png)
+![weather-demo-lookup-success](https://user-images.githubusercontent.com/16892576/115748775-2755e400-a39f-11eb-8967-2933f7ddeb48.png)
+
 
 
