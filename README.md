@@ -1,5 +1,7 @@
 # weather-demo
 
+N.B! Unfortunatley, github does not allow to upload files > 25MB ; so I can send it privately by request, or can be built manually by running command mvn clean install
+
 Functional requirements: implemeted fully
 
 Non functional requirements:
