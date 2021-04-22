@@ -19,7 +19,9 @@ To run application:
           for localhost or private IP addresses and IPv6 addresses
 
 DB Structure:
+![mintos-db-diagram](https://user-images.githubusercontent.com/16892576/115747793-42742400-a39e-11eb-826c-06c2473322b3.png)
 
 Success example:          
+![Mintos-demo-lookup-success](https://user-images.githubusercontent.com/16892576/115747810-456f1480-a39e-11eb-988e-06ac0c1e3b8c.png)
 
 
