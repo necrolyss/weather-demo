@@ -19,7 +19,9 @@ To run application:
 
  1) java -jar weather-demo-0.0.1-SNAPSHOT.jar (required Java 16 to run)
  2) Send GET request on http://localhost:8080/api/weather/current with 2 headers:
+
     2.1) Content-Type : application/json
+    
     2.2) Debug-IP : some public IP address (e.g. 185.80.236.209). Will not work correctly (ofc., handled and delicately informed to user) 
           for localhost or private IP addresses and IPv6 addresses
 
