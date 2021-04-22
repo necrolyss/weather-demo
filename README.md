@@ -1,6 +1,6 @@
 # weather-demo
 
-N.B! Unfortunatley, github does not allow to upload files > 25MB ; so I can send it privately by request, or can be built manually by running command mvn clean install
+N.B! Unfortunatley, github does not allow to upload files > 25MB ; so I can send it privately by request / publish in some cloud, or can be built manually by running command mvn clean install
 
 API keys for testing are configured in application.properties file, and, because are free, have some reasonable useage limits.
 
