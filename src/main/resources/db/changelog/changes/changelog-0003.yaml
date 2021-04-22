@@ -1,0 +1,73 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-location-conditions
+      author: vasya pupkin
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: location_conditions
+      changes:
+        - createTable:
+            tableName: location_conditions
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_location_condition_id
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: location_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_condition_location_id
+                    references: location(id)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: latitude
+                  type: DOUBLE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: longitude
+                  type: DOUBLE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: description
+                  type: VARCHAR(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: temperature
+                  type: VARCHAR(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: feels_like
+                  type: VARCHAR(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: humidity
+                  type: VARCHAR(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: wind_speed
+                  type: DOUBLE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: wind_direction
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: DATE

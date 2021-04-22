@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-iplocation
+      author: vasya pupkin
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: ip_location
+      changes:
+        - createTable:
+            tableName: ip_location
+            columns:
+              - column:
+                  name: ip
+                  type: VARCHAR(15)
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_ip
+              - column:
+                  name: location_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_ip_location_id
+                    references: location(id)
