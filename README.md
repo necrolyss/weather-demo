@@ -1,6 +1,6 @@
 # weather-demo
 
-N.B! Unfortunatley, github does not allow to upload files > 25MB ; so I can send it privately by request / publish in some cloud, or can be built manually by running command mvn clean install
+N.B! Unfortunatley, github does not allow to upload files > 25MB ; so I can send it privately by request / take it from cloud : https://cloud.mail.ru/public/57Yh/U8qMza39t, or can be built manually by running command mvn clean install
 
 API keys for testing are configured in application.properties file, and, because are free, have some reasonable useage limits.
 
@@ -27,7 +27,8 @@ To run application:
 
 DB Structure:
 
-![mintos-db-diagram](https://user-images.githubusercontent.com/16892576/115747793-42742400-a39e-11eb-826c-06c2473322b3.png)
+![Mintos-model-fixed](https://user-images.githubusercontent.com/16892576/115958298-918d9680-a50f-11eb-9d38-3f856ee7a0cf.png)
+
 
 Success example:         
 
