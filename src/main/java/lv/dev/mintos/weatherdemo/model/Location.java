@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Objects;
@@ -28,12 +29,20 @@ public class Location implements Serializable {
     @JsonProperty("country_name")
     private String country;
 
+    @NotNull
+    Double latitude;
+
+    @NotNull
+    Double longitude;
+
     public Location() {
     }
 
-    public Location(String city, String country) {
+    public Location(String city, String country, Double latitude, Double longitude) {
         this.city = city;
         this.country = country;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public Long getId() {
@@ -60,6 +69,22 @@ public class Location implements Serializable {
         this.city = city;
     }
 
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -67,19 +92,24 @@ public class Location implements Serializable {
         Location location = (Location) o;
         return Objects.equals(id, location.id)
                 && Objects.equals(city, location.city)
-                && Objects.equals(country, location.country);
+                && Objects.equals(country, location.country)
+                && Objects.equals(latitude, location.latitude)
+                && Objects.equals(longitude, location.longitude);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, city, country);
+        return Objects.hash(id, city, country, latitude, longitude);
     }
 
     @Override
     public String toString() {
-        return "{id=" + id +
+        return "Location{" +
+                "id=" + id +
                 ", city='" + city + '\'' +
                 ", country='" + country + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
                 '}';
     }
 }

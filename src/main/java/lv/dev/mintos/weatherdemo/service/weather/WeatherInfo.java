@@ -5,7 +5,5 @@ public record WeatherInfo(String description,
                           Double feelsLike,
                           Double humidity,
                           Double windSpeed,
-                          Integer windDirection,
-                          Double latitude,
-                          Double longitude) {
+                          Integer windDirection) {
 }

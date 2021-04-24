@@ -29,16 +29,6 @@ databaseChangeLog:
               - column:
                   constraints:
                     nullable: false
-                  name: latitude
-                  type: DOUBLE
-              - column:
-                  constraints:
-                    nullable: false
-                  name: longitude
-                  type: DOUBLE
-              - column:
-                  constraints:
-                    nullable: false
                   name: description
                   type: VARCHAR(250)
               - column:

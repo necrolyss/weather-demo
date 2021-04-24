@@ -24,7 +24,9 @@ class LocationServiceTest {
     private static final String IP_ADDRESS = "123.123.123.123";
     private static final String CITY = "Riga";
     private static final String COUNTRY = "Latvia";
-    public static final long LOCATION_ID = 1L;
+    private static final Double LATITUDE = 56.96017074584961;
+    private static final Double LONGITUDE = 24.134309768676758;
+    private static final Long LOCATION_ID = 1L;
 
     @Mock
     private GetLocationHandler getLocationHandler;
@@ -40,7 +42,7 @@ class LocationServiceTest {
 
     @Test
     void foundsLocationFromDbCache() {
-        Location location = new Location(CITY, COUNTRY);
+        Location location = new Location(CITY, COUNTRY, LATITUDE, LONGITUDE);
         Optional<IpLocation> ipLocation = Optional.of(getIpLocation(location));
         given(ipLocationRepository.findById(IP_ADDRESS)).willReturn(ipLocation);
 
@@ -51,7 +53,7 @@ class LocationServiceTest {
 
     @Test
     void resolvesLocationFromRemote() {
-        Location location = new Location(CITY, COUNTRY);
+        Location location = new Location(CITY, COUNTRY, LATITUDE, LONGITUDE);
         given(ipLocationRepository.findById(IP_ADDRESS)).willReturn(Optional.empty());
         given(getLocationHandler.handle(any())).willReturn(location);
         doAnswer(invocationOnMock -> {
@@ -69,7 +71,7 @@ class LocationServiceTest {
     @Test
     void resolvesLocationFromRemoteAndSavesToDB() {
         given(ipLocationRepository.findById(IP_ADDRESS)).willReturn(Optional.empty());
-        given(getLocationHandler.handle(any())).willReturn(new Location(CITY, COUNTRY));
+        given(getLocationHandler.handle(any())).willReturn(new Location(CITY, COUNTRY, LATITUDE, LONGITUDE));
         doAnswer(invocationOnMock -> {
             GetLocationCommand command = invocationOnMock.getArgument(0);
             return getLocationHandler.handle(command);

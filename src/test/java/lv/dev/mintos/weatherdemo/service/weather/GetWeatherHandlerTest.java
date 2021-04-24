@@ -28,6 +28,8 @@ class GetWeatherHandlerTest {
 
     private static final String API_KEY = "123ABC";
     private static final String PROVIDER_URL = "http://127.0.0.1/api";
+    private static final Double LATITUDE = 56.96017074584961;
+    private static final Double LONGITUDE = 24.134309768676758;
 
     private static final String VALID_LOCATION_RESPONSE = """
             "weather": good
@@ -72,7 +74,7 @@ class GetWeatherHandlerTest {
     void handlesCommandForValidLocation() {
         given(builder.get(String.class)).willReturn(VALID_LOCATION_RESPONSE);
         given(weatherInfoUnmarshaller.toWeatherInfo(VALID_LOCATION_RESPONSE)).willReturn(Optional.of(weatherInfo));
-        GetWeatherCommand command = new GetWeatherCommand(new Location("Riga", "Latvia"));
+        GetWeatherCommand command = new GetWeatherCommand(new Location("Riga", "Latvia", LATITUDE, LONGITUDE));
 
         WeatherInfo actualInfo = getLocationHandler.handle(command);
 
@@ -83,7 +85,7 @@ class GetWeatherHandlerTest {
     void handlesCommandForInvalidLocation() {
         given(builder.get(String.class)).willReturn(INVALID_LOCATION_RESPONSE);
         given(weatherInfoUnmarshaller.toWeatherInfo(INVALID_LOCATION_RESPONSE)).willReturn(Optional.empty());
-        GetWeatherCommand command = new GetWeatherCommand(new Location("Riga", "Latvia"));
+        GetWeatherCommand command = new GetWeatherCommand(new Location("Riga", "Latvia", LATITUDE, LONGITUDE));
 
         assertThatThrownBy(() -> getLocationHandler.handle(command))
             .isInstanceOf(WeatherUnavailable.class);

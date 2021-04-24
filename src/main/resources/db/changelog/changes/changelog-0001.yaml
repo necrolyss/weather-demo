@@ -28,4 +28,14 @@ databaseChangeLog:
                     nullable: false
                   name: country
                   type: VARCHAR(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: latitude
+                  type: DOUBLE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: longitude
+                  type: DOUBLE
             tableName: location

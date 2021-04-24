@@ -35,7 +35,7 @@ class WeatherControllerTest {
 
     @Test
     void getsCurrentWeather() {
-        WeatherInfo weatherInfo = new WeatherInfo("sunny", 1d, 2d, 3d, 4d, 5, 6d, 7d);
+        WeatherInfo weatherInfo = new WeatherInfo("sunny", 1d, 2d, 3d, 4d, 5);
         given(ipService.userIp(httpServletRequest)).willReturn(USER_IP);
         given(weatherInfoService.currentWeatherInfo(USER_IP)).willReturn(weatherInfo);
 

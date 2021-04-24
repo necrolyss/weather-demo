@@ -45,8 +45,6 @@ public class WeatherInfoService {
         locationConditions.setHumidity(weatherInfo.humidity());
         locationConditions.setWindSpeed(weatherInfo.windSpeed());
         locationConditions.setWindDirection(weatherInfo.windDirection());
-        locationConditions.setLatitude(weatherInfo.latitude());
-        locationConditions.setLongitude(weatherInfo.longitude());
         return locationConditions;
     }
 

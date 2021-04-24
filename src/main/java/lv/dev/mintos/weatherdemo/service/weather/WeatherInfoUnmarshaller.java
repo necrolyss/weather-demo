@@ -26,9 +26,7 @@ class WeatherInfoUnmarshaller {
                         jsonNode.at("/main/feels_like").doubleValue(),
                         jsonNode.at("/main/humidity").doubleValue(),
                         jsonNode.at("/wind/speed").doubleValue(),
-                        jsonNode.at("/wind/deg").intValue(),
-                        jsonNode.at("/coord/lat").doubleValue(),
-                        jsonNode.at("/coord/lon").doubleValue()
+                        jsonNode.at("/wind/deg").intValue()
                 ));
             }
         } catch (JsonProcessingException e) {

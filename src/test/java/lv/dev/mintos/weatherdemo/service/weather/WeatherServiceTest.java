@@ -16,6 +16,11 @@ import static org.mockito.Mockito.doAnswer;
 @ExtendWith(SpringExtension.class)
 class WeatherServiceTest {
 
+    private static final String CITY = "Riga";
+    private static final String COUNTRY = "Latvia";
+    private static final Double LATITUDE = 56.96017074584961;
+    private static final Double LONGITUDE = 24.134309768676758;
+
     @Mock
     private GetWeatherHandler getWeatherHandler;
     @Mock
@@ -34,8 +39,12 @@ class WeatherServiceTest {
             return getWeatherHandler.handle(command);
         }).when(resilient).invoke(any(), any());
 
-        WeatherInfo actualInfo = weatherService.currentWeather(new Location("Riga", "Latvia"));
+        WeatherInfo actualInfo = weatherService.currentWeather(location());
 
         assertThat(actualInfo).isEqualTo(weatherInfo);
+    }
+
+    private Location location() {
+        return new Location(CITY, COUNTRY, LATITUDE, LONGITUDE);
     }
 }

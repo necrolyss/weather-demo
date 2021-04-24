@@ -28,6 +28,10 @@ class GetLocationHandlerTest {
     private static final String PROVIDER_URL = "http://127.0.0.1/api";
     private static final String REQUESTER_PUBLIC_IP = "123.123.123.123";
     private static final String REQUESTER_PRIVATE_IP = "192.168.1.1";
+    private static final String CITY = "Riga";
+    private static final String COUNTRY = "Latvia";
+    private static final Double LATITUDE = 56.96017074584961;
+    private static final Double LONGITUDE = 24.134309768676758;
 
     private static MockedStatic<ClientBuilder> jerseyClientBuilder;
 
@@ -61,12 +65,13 @@ class GetLocationHandlerTest {
 
     @Test
     void handlesCommandForValidIp() {
+        Location expectedLocation = new Location(CITY, COUNTRY, LATITUDE, LONGITUDE);
         given(webTarget.path(REQUESTER_PUBLIC_IP)).willReturn(webTarget);
-        given(builder.get(Location.class)).willReturn(new Location("Riga", "Latvia"));
+        given(builder.get(Location.class)).willReturn(expectedLocation);
 
         Location location = getLocationHandler.handle(new GetLocationCommand(REQUESTER_PUBLIC_IP));
 
-        assertThat(location).isEqualTo(new Location("Riga", "Latvia"));
+        assertThat(location).isEqualTo(expectedLocation);
     }
 
     @Test

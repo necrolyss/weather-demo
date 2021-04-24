@@ -16,10 +16,6 @@ class WeatherInfoUnmarshallerTest {
 
     public static final String CONSISTENT_JSON = """
             {
-              "coord": {
-                "lon": 24.0833,
-                "lat": 57
-              },
               "weather": [
                 {
                   "description": "clear sky"
@@ -57,7 +53,7 @@ class WeatherInfoUnmarshallerTest {
 
     @Test
     void hasConsistentWeatherInfo() {
-        WeatherInfo expectedInfo = new WeatherInfo("clear sky", 19d, 17.74d, 30d, 5.66d, 350, 57d, 24.0833);
+        WeatherInfo expectedInfo = new WeatherInfo("clear sky", 19d, 17.74d, 30d, 5.66d, 350);
 
         Optional<WeatherInfo> weatherInfo = weatherInfoUnmarshaller.toWeatherInfo(CONSISTENT_JSON);
 

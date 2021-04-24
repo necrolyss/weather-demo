@@ -46,7 +46,7 @@ class WeatherInfoServiceTest {
     @Test
     void getsCurrentWeatherInfo() {
         WeatherInfo weatherInfo = prepareWeatherInfo();
-        Location location = new Location("Riga", "Latvia");
+        Location location = new Location("Riga", "Latvia", LATITUDE, LONGITUDE);
         given(locationService.locationOf(IP_ADDRESS)).willReturn(location);
         given(weatherService.currentWeather(location)).willReturn(weatherInfo);
 
@@ -60,9 +60,7 @@ class WeatherInfoServiceTest {
                 .returns(HUMIDITY, LocationConditions::getHumidity)
                 .returns(WIND_SPEED, LocationConditions::getWindSpeed)
                 .returns(WIND_DIRECTION, LocationConditions::getWindDirection)
-                .returns(DESCRIPTION, LocationConditions::getDescription)
-                .returns(LATITUDE, LocationConditions::getLatitude)
-                .returns(LONGITUDE, LocationConditions::getLongitude);
+                .returns(DESCRIPTION, LocationConditions::getDescription);
 
     }
 
@@ -73,9 +71,7 @@ class WeatherInfoServiceTest {
                 FEELS_LIKE,
                 HUMIDITY,
                 WIND_SPEED,
-                WIND_DIRECTION,
-                LATITUDE,
-                LONGITUDE
+                WIND_DIRECTION
         );
     }
 
